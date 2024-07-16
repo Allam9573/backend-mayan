@@ -26,12 +26,13 @@ public class ClienteServiceImpl implements ClienteService {
     public List<Cliente> listarClientes() {
         Iterable<Cliente> iterableClientes = this.clienteRepository.findAll();
         List<Cliente> clientes = new ArrayList<>();
-        for(int i = 0; i < clientes.size(); i++){
-            if(clientes[i].is)
+        for (Cliente cliente : iterableClientes) {
+            if (cliente.isActivo()) {
+                clientes.add(cliente);
+            }
         }
         return clientes;
     }
-    
 
     @Override
     public Cliente eliminarCliente(int id) {
